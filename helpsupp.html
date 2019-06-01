@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta charset="UTF-8">
+<head>
+    <title>Helpsup</title>
+    <meta name="description" content="Suporte interno">
+    <meta name="keywords" content="ajuda,suporte,dinamize,intranet">
+    <meta name="author" content="Nicolas Pedroso">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="modulo.js"></script>
+</head>
+<body ng-app="app">
+	<div class="jumbotron jumbotron-fluid" style="padding-bottom: 0;padding-top: 0;">
+    <div class="container" align="center">
+   	   <h1 align="center">Help Supp</h1>
+       <blockquote class="blockquote">
+   	   		<footer class="blockquote-footer">By Nick 1</cite></footer>
+	   </blockquote>
+    </div>
+    </div> 
+    <div ng-controller="controlador">
+    	<div class="form-group" align="center">
+    		<label for="form-control">Procuro por: </label>
+            <input type="text" class="form-control" ng-model="searchText" placeholder="Digite aqui" style="max-width:600px; border-radius: 20px;"/>
+        <br /><br />
+        <table class="table">
+                <tr ng-repeat="registro in registros | filter:searchText">
+                    <td><b> {{ registro.titulo }} </b></td>
+                    <td> {{ registro.desc }} </td>
+                </tr>
+        </table>
+        <button type="button" class="btn btn-primary">Botão de Pânico</button>
+        </div>
+</body>
+</html>
