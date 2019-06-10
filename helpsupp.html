@@ -27,13 +27,46 @@
     		<label for="form-control">Procuro por: </label>
             <input type="text" class="form-control" ng-model="searchText" placeholder="Digite aqui" style="max-width:600px; border-radius: 20px;"/>
         <br /><br />
+			<!-- Add filme --> 
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Cadastrar solução</button>
+
+			<!-- Modal -->
+			<div id="myModal" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Cadastrar solução</h4>
+			      </div>
+			      <div class="modal-body">
+			      	<form class="form-add" ng-submit="addCad();" onsubmit="$('#sucessoCad').fadeIn('fast').delay(2000).fadeOut();">
+			      		<input type="text" class="form-control" ng-model="novoCad.titulo" placeholder="Título" style="max-width:600px;" required /><br>
+			      		<textarea class="form-control" ng-model="novoCad.desc" placeholder="Descrição" style="max-width:600px;" required/></textarea><br>
+			      		<select class="form-control" id="select" required ng-model="novoCad.categoria" ng-options="registro.categoria for registro in registros">
+					      <option disabled value>Selecione a categoria</option>
+					    </select>
+			      </div>
+			      <div class="modal-footer">
+			      	<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			        <button type="submit" class="btn btn-success">OK</button>
+			        <br><br>
+			        <!-- Aqui é a mensagem de cadstro com sucesso escondida, onde será exibida no momento de validação -->
+                          <div class="alert alert-success" id="sucessoCad" class="row" style="display: none;">
+                              <div align="center">Cadastro realizado com sucesso!</div>
+                          </div>
+			      </form>
+			      </div>
+			    </div>
+			  </div>
+			 </div>
+		<!-- Mostra dados -->	
         <table class="table">
                 <tr ng-repeat="registro in registros | filter:searchText">
                     <td><b> {{ registro.titulo }} </b></td>
                     <td> {{ registro.desc }} </td>
+                    <td> {{ registro.categoria }} </td>
                 </tr>
         </table>
-        <button type="button" class="btn btn-primary">Botão de Pânico</button>
         </div>
 </body>
 </html>
