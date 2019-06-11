@@ -27,7 +27,7 @@
     		<label for="form-control">Procuro por: </label>
             <input type="text" class="form-control" ng-model="searchText" placeholder="Digite aqui" style="max-width:600px; border-radius: 20px;"/>
         <br /><br />
-			<!-- Add filme --> 
+			<!-- Add solução --> 
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Cadastrar solução</button>
 
 			<!-- Modal -->
@@ -42,7 +42,7 @@
 			      	<form class="form-add" ng-submit="addCad();" onsubmit="$('#sucessoCad').fadeIn('fast').delay(2000).fadeOut();">
 			      		<input type="text" class="form-control" ng-model="novoCad.titulo" placeholder="Título" style="max-width:600px;" required /><br>
 			      		<textarea class="form-control" ng-model="novoCad.desc" placeholder="Descrição" style="max-width:600px;" required/></textarea><br>
-			      		<select class="form-control" id="select" required ng-model="novoCad.categoria" ng-options="registro.categoria for registro in registros">
+			      		<select class="form-control" id="select" required ng-model="novoCad.categoria" ng-options="categoria.categoria as categoria.categoria for categoria in categorias">
 					      <option disabled value>Selecione a categoria</option>
 					    </select>
 			      </div>
@@ -50,7 +50,7 @@
 			      	<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
 			        <button type="submit" class="btn btn-success">OK</button>
 			        <br><br>
-			        <!-- Aqui é a mensagem de cadstro com sucesso escondida, onde será exibida no momento de validação -->
+			        <!-- Aqui é a mensagem de cadastro com sucesso escondida, onde será exibida no momento de validação -->
                           <div class="alert alert-success" id="sucessoCad" class="row" style="display: none;">
                               <div align="center">Cadastro realizado com sucesso!</div>
                           </div>
@@ -64,7 +64,6 @@
                 <tr ng-repeat="registro in registros | filter:searchText">
                     <td><b> {{ registro.titulo }} </b></td>
                     <td> {{ registro.desc }} </td>
-                    <td> {{ registro.categoria }} </td>
                 </tr>
         </table>
         </div>
