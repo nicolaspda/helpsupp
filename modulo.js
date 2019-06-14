@@ -5,7 +5,7 @@ var app = angular.module("app", []);
              $scope.registros = [];
 
             var carregarDados = function(){
-            	 $http.get("https://api.myjson.com/bins/19bjkx").then(function(response) {
+            	 $http.get("http://api.npoint.io/da87285cc06b0736eb8c").then(function(response) {
 				    $scope.registros = response.data;
 				  });
             };
@@ -46,9 +46,9 @@ var app = angular.module("app", []);
             						
             $scope.novoCad = {};
 
-           /* $scope.addCad = function(){
+            $scope.addCad = function(){
             	var cad = angular.copy($scope.novoCad);
-            	$http.post("http://api.myjson.com/bins/qyypt", cad).then(function(response){
+            	$http.post("http://api.npoint.io/da87285cc06b0736eb8c", cad).then(function(response){
             	console.log(response);
             	carregarDados();            		
             	});
@@ -57,6 +57,6 @@ var app = angular.module("app", []);
             	$scope.novoCad = {};
 
             }
-			*/
+			
             carregarDados();
         });
