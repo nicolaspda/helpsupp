@@ -5,7 +5,7 @@ var app = angular.module("app", []);
              $scope.registros = [];
 
             var carregarDados = function(){
-            	 $http.get("http://api.npoint.io/da87285cc06b0736eb8c").then(function(response) {
+            	 $http.get("https://api.myjson.com/bins/12si5t").then(function(response) {
 				    $scope.registros = response.data;
 				  });
             };
@@ -48,12 +48,14 @@ var app = angular.module("app", []);
 
             $scope.addCad = function(){
             	var cad = angular.copy($scope.novoCad);
-            	$http.post("http://api.npoint.io/da87285cc06b0736eb8c", cad).then(function(response){
+            	$scope.registros.push(cad);
+            	var todo = angular.copy($scope.registros);
+            	$http.put("https://api.myjson.com/bins/12si5t", todo).then(function(response){
             	console.log(response);
             	carregarDados();            		
             	});
 
-            	//$scope.registros.push(cad);
+            	
             	$scope.novoCad = {};
 
             }
