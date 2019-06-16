@@ -5,7 +5,7 @@ var app = angular.module("app", []);
              $scope.registros = [];
 
             var carregarDados = function(){
-            	 $http.get("https://api.myjson.com/bins/12si5t").then(function(response) {
+            	 $http.get("https://api.myjson.com/bins/1ensyd").then(function(response) {
 				    $scope.registros = response.data;
 				  });
             };
@@ -50,7 +50,7 @@ var app = angular.module("app", []);
             	var cad = angular.copy($scope.novoCad);
             	$scope.registros.push(cad);
             	var todo = angular.copy($scope.registros);
-            	$http.put("https://api.myjson.com/bins/12si5t", todo).then(function(response){
+            	$http.put("https://api.myjson.com/bins/1ensyd", todo).then(function(response){
             		console.log(response);		            		
             	});
        	
@@ -67,7 +67,7 @@ var app = angular.module("app", []);
              	});
 
              	var todo = angular.copy($scope.registros);
-             	$http.put("https://api.myjson.com/bins/12si5t", todo).then(function(response){
+             	$http.put("https://api.myjson.com/bins/1ensyd", todo).then(function(response){
             		console.log(response);           		
             	});
 

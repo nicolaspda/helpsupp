@@ -42,7 +42,7 @@
 			      	<form class="form-add" ng-submit="addCad();" onsubmit="$('#sucessoCad').fadeIn('fast').delay(2000).fadeOut();">
 			      		<input type="text" class="form-control" ng-model="novoCad.titulo" placeholder="Título" style="max-width:600px;" required /><br>
 			      		<textarea class="form-control" ng-model="novoCad.desc" placeholder="Descrição" style="max-width:600px;" required/></textarea><br>
-			      		<select class="form-control" id="select" required ng-model="novoCad.categoria" ng-options="categoria.categoria as categoria.categoria for categoria in categorias">
+			      		<select class="form-control" id="select" required ng-model="novoCad.categoria" ng-options="categoria.categoria as categoria.categoria for categoria in categorias | orderBy:'categoria'">
 					      <option disabled value>Selecione a categoria</option>
 					    </select>
 			      </div>
@@ -65,10 +65,10 @@
                     <td><b> {{ registro.titulo }} </b></td>
                     <td> {{ registro.desc }} </td>
                     <td> {{ registro.categoria }}
-	                    <button type="button" class="close" aria-label="Close" data-toggle="modal" data-target="#remover">
+	                    <button type="button" class="close" aria-label="Close" data-toggle="modal" data-target="#remover{{$index}}">
 	  						<span aria-hidden="true">&times;</span>	 						
 						</button> 
-					<div id="remover" class="modal fade" role="dialog">
+					<div id="remover{{$index}}" class="modal fade" role="dialog">
 						<div class="modal-dialog">
 							 <div class="modal-content">
 							      <div class="modal-header">
@@ -77,7 +77,7 @@
 							      </div>
 							      <div class="modal-body" align="center">
 							        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-							        <button class="btn btn-success" ng-click="remover(registro.titulo)" onclick="$('#remover').modal('hide');">Remover</button>
+							        <button class="btn btn-success" ng-click="remover(registro.titulo)" data-dismiss="modal">Remover</button>
 							      </div>
 							 </div>
 						</div>
