@@ -51,14 +51,26 @@ var app = angular.module("app", []);
             	$scope.registros.push(cad);
             	var todo = angular.copy($scope.registros);
             	$http.put("https://api.myjson.com/bins/12si5t", todo).then(function(response){
-            	console.log(response);
-            	carregarDados();            		
+            		console.log(response);		            		
             	});
-
-            	
+       	
             	$scope.novoCad = {};
-
             }
 			
             carregarDados();
+
+             $scope.remover = function(titulo){
+             	angular.forEach($scope.registros, function(registro, i){
+             		if(registro.titulo == titulo){
+             			$scope.registros.splice(i,1);
+             		}
+             	});
+
+             	var todo = angular.copy($scope.registros);
+             	$http.put("https://api.myjson.com/bins/12si5t", todo).then(function(response){
+            		console.log(response);           		
+            	});
+
+            }
+
         });

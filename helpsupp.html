@@ -64,7 +64,25 @@
                 <tr ng-repeat="registro in registros | filter:searchText | orderBy:'categoria'">
                     <td><b> {{ registro.titulo }} </b></td>
                     <td> {{ registro.desc }} </td>
-                    <td> {{ registro.categoria }} </td>
+                    <td> {{ registro.categoria }}
+	                    <button type="button" class="close" aria-label="Close" data-toggle="modal" data-target="#remover">
+	  						<span aria-hidden="true">&times;</span>	 						
+						</button> 
+					<div id="remover" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+							 <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal">&times;</button>
+							        <h4 class="modal-title">Deseja remover essa solução?</h4>
+							      </div>
+							      <div class="modal-body" align="center">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+							        <button class="btn btn-success" ng-click="remover(registro.titulo)" onclick="$('#remover').modal('hide');">Remover</button>
+							      </div>
+							 </div>
+						</div>
+					</div>	
+					</td>
                 </tr>
         </table>
         </div>
